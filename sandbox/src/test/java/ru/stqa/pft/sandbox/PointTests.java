@@ -8,9 +8,9 @@ public class PointTests {
 
     @Test
 
-    public void testPoint4 (){
-        Point4 p1 = new Point4();
-        Point4 p2 = new Point4();
+    public void testPoint (){
+        Point p1 = new Point();
+        Point p2 = new Point();
         p1.x = -2.0;
         p1.y = -8.0;
         p2.x = 4.0;
