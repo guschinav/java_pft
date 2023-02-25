@@ -1,17 +1,19 @@
 package ru.stqa.pft.sandbox;
 
 public class Point {
-    public double x;
-    public double y;
+    public double x, y;
+
+
+    public  Point (double x, double y){
+        this.x = x;
+        this.y = y;
+    }
+
 
     public static void main (String[] args) {
-        Point p1 = new Point();
-        Point p2 = new Point();
+        Point p1 = new Point(-2.0, -8.0);
+        Point p2 = new Point(4.0, 9.0);
 
-        p1.x = -2.0;
-        p1.y = -8.0;
-        p2.x = 4.0;
-        p2.y = 9.0;
 
         System.out.println("Расстояние между точками Point 1(" + p1.x + ";" + p1.y + ") и Point 2(" + p2.x + ";" + p2.y + ") = " + distance(p1, p2));
 

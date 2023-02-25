@@ -8,13 +8,27 @@ public class PointTests {
 
     @Test
 
-    public void testPoint (){
-        Point p1 = new Point();
-        Point p2 = new Point();
-        p1.x = -2.0;
-        p1.y = -8.0;
-        p2.x = 4.0;
-        p2.y = 9.0;
+    public void testPoint1 () {
+
+        Point p1 = new Point(-2.0, -8.0);
+        Point p2 = new Point(4.0, 9.0);
+
         Assert.assertEquals(p1.distance(p2), 18.027756377319946);
+    }
+
+    @Test
+    public void testPoint2 () {
+        Point p1 = new Point(-1.0, -7.0);
+        Point p2 = new Point(6.0, 8.0);
+
+        Assert.assertEquals(p1.distance(p2), 15.0);
+    }
+
+    @Test
+    public void testPoint3 () {
+        Point p1 = new Point(2.0, 3.0);
+        Point p2 = new Point(6.0, 8.0);
+
+        Assert.assertEquals(p1.distance(p2), 6.4031242374328485);
     }
 }
