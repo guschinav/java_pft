@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,13 +10,13 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    public WebDriver wd;
+    FirefoxDriver wd;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
       wd = new FirefoxDriver();
       wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-      wd.get("http://localhost/group.php?delete=Delete+group%28s%29&selected%5B%5D=1");
+      wd.get("http://localhost/group.php");
       login("admin", "secret");
     }
 
@@ -33,7 +32,7 @@ public class TestBase {
     }
 
     protected void returnToGroupPage() {
-      wd.findElement(By.linkText("groups")).click();
+      wd.findElement(By.linkText("group page")).click();
     }
 
     protected void submitGroupCreation() {
@@ -56,14 +55,14 @@ public class TestBase {
       wd.findElement(By.name("new")).click();
     }
 
-    protected void gotoGroupPage() {
+    protected void goToGroupPage() {
       wd.findElement(By.linkText("groups")).click();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
       wd.quit();
-     }
+    }
 
     private boolean isElementPresent(By by) {
       try {
