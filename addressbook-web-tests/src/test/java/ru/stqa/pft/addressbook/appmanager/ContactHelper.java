@@ -40,4 +40,13 @@ public class ContactHelper extends HelperBase {
     public void updateContactModification() {
         click(By.name("update"));
     }
+
+    public void choiceContact() {
+        click(By.xpath("//input[@id='19']"));
+    }
+
+    public void deleateContact() {
+        click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+    }
 }
