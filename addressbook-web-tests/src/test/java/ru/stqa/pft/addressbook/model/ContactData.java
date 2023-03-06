@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
     private final String firstname;
@@ -6,7 +6,7 @@ public class ContactData {
     private final String lastname;
     private final String mobile;
     private final String email;
-    private final String adress2;
+    private final String address2;
 
     public ContactData(String firstname, String middlename, String lastname, String mobile, String email, String address2) {
         this.firstname = firstname;
@@ -14,7 +14,7 @@ public class ContactData {
         this.lastname = lastname;
         this.mobile = mobile;
         this.email = email;
-        this.adress2 = address2;
+        this.address2 = address2;
     }
 
     public String getFirstname() {
@@ -37,7 +37,7 @@ public class ContactData {
         return email;
     }
 
-    public String getAdress2() {
-        return adress2;
+    public String getAddress2() {
+        return address2;
     }
 }
