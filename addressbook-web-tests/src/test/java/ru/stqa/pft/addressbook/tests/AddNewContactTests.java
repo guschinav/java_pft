@@ -8,7 +8,7 @@ public class AddNewContactTests extends TestBase {
   @Test
   public void testAddNewContact()  {
     app.getNavigationHelper().goToNewAddPage();
-    app.getContactHelper().fillNewContact(new ContactData("John", "Silver", "Black", "+791115648594", "test@mail.ru", "New Orenburg"));
+    app.getContactHelper().fillNewContact(new ContactData("John", "Silver", "Yellow", "+791115648594", "test@mail.ru", "New Orenburg"));
     app.getContactHelper().addNewContact();
     app.getContactHelper().returnToHomePage();
   }
