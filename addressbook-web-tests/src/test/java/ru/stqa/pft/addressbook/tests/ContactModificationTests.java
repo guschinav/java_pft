@@ -11,7 +11,7 @@ public class ContactModificationTests extends TestBase{
 
         app.getContactHelper().goToHomePage();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillNewContact(new ContactData("Tom", "Gold", "Yellow", "+111111111111", "test@mail.ru", "New Orenburg"));
+        app.getContactHelper().fillNewContact(new ContactData("Tom", "Gold", "Yellow", "+111111111111", "test@mail.ru", "New Orenburg", null), false);
         app.getContactHelper().updateContactModification();
 
 
