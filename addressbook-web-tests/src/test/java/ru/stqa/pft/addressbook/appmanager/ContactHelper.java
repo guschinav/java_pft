@@ -38,10 +38,6 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void goToHomePage() {
-        click(By.linkText("home"));
-    }
-
 
     public void initContactModification() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -65,4 +61,13 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public void createContact(ContactData contact, boolean creation) {
+        fillNewContact(contact, creation);
+        addNewContact();
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+    }
 }
