@@ -61,8 +61,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public void createContact(ContactData contact, boolean creation) {
-        fillNewContact(contact, creation);
+    public void createContact(ContactData contactData) {
+        fillNewContact(contactData,true);
         addNewContact();
         returnToHomePage();
     }
@@ -70,4 +70,6 @@ public class ContactHelper extends HelperBase {
     public boolean isThereAContact() {
         return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
     }
+
+
 }
