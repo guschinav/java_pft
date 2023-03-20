@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    WebDriver wd;
+    public WebDriver wd;
 
     private  SessionHelper sessionHelper ;
     private  ContactHelper contactHelper;
