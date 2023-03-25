@@ -25,6 +25,6 @@ public class GroupDeletionTests extends TestBase {
     before.remove(before.size() - 1); //старый список должен сождержать те же элементы, что и нвоый
     Assert.assertEquals(before, after); //сравниваем элементы с одинаковыми индексами
     }
-  
+
 
 }
