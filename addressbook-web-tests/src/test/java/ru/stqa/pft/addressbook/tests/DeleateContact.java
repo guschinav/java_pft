@@ -13,34 +13,34 @@ public class DeleateContact extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions (){
-        app.getNavigationHelper().goToHomePage();
-        if (!app.getContactHelper().isThereAContact()) {
-            app.getNavigationHelper().goToGroupPage();
-            if (!app.getGroupHelper().isThereAGroup()) {
-                app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
+        app.goTo().HomePage();
+        if (!app.contact().isThereAContact()) {
+            app.goTo().GroupPage();
+            if (!app.group().isThereAGroup()) {
+                app.group().create(new GroupData("test1", "test2", "test3"));
             }
-            app.getNavigationHelper().goToNewAddPage();
+            app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-            app.getContactHelper().createContact(new ContactData("John", "Silver", "Yellow", "+791115648594", "test@mail.ru", "New Orenburg", CurrentGroup));
-            app.getNavigationHelper().goToHomePage();
+            app.contact().contact(new ContactData("John", "Silver", "Yellow", "+791115648594", "test@mail.ru", "New Orenburg", CurrentGroup));
+            app.goTo().HomePage();
         }
     }
 
     @Test
     public void testDeleateContact() {
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().choiceContact(before.size() -1);
-        app.getContactHelper().deleateContact();
-        app.getNavigationHelper().goToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
+        int index = before.size() -1;
+        app.contact().delete(index);
+        app.goTo().HomePage();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size() -1);
 
-        before.remove(before.size() - 1);
+        before.remove(index);
         Assert.assertEquals(before, after);
         }
 
 
 
 
-    }
+}
 
