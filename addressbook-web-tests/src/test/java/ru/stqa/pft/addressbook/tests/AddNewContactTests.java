@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class AddNewContactTests extends TestBase {
   @BeforeMethod
@@ -20,7 +21,7 @@ public class AddNewContactTests extends TestBase {
   @Test
   public void testAddNewContact() {
     app.goTo().HomePage();
-    List<ContactData> before = app.contact().list();
+    Set<ContactData> before = app.contact().all();
     app.goTo().goToNewAddPage();
     if (!app.group().checkGroup()) {
       app.goTo().GroupPage();
@@ -31,13 +32,12 @@ public class AddNewContactTests extends TestBase {
     ContactData contact = new ContactData().withFirstname("Obra").withMiddlename("Hello").withLastname("First").withMobile("+111111111111").withEmail("test@mail.ru").withAddress2("New Orenburg").withGroup(CurrentGroup);
     app.contact().contact(contact);
     app.goTo().HomePage();
-    List<ContactData> after = app.contact().list();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    contact.withId(after.stream().mapToInt((c)-> c.getId()).max().getAsInt());
+
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before,after);
   }
 
