@@ -18,11 +18,12 @@ public class ContactModificationTests extends TestBase{
         if (!app.contact().isThereAContact()) {
             app.goTo().GroupPage();
             if (!app.group().isThereAGroup()) {
-                app.group().create(new GroupData("test1", "test2", "test3"));
+                app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
             }
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-            app.contact().contact(new ContactData("John", "Silver", "Yellow", "+791115648594", "test@mail.ru", "New Orenburg", CurrentGroup));
+            app.contact().contact(new ContactData()
+                    .withFirstname("John").withMiddlename("Silver").withLastname("Yellow").withMobile("+791115648594").withEmail("test@mail.ru").withAddress2("New Orenburg").withGroup(CurrentGroup));
             app.goTo().HomePage();
         }
     }
@@ -35,7 +36,7 @@ public class ContactModificationTests extends TestBase{
     public void testContactModification () {
         List<ContactData> before = app.contact().list();
         int index = before.size() -1;
-        ContactData contact = new ContactData(before.get(index).getId(),"Pupka", "Hello", "First", "+111111111111", "test@mail.ru", "New Orenburg", null);
+        ContactData contact = new ContactData().withFirstname("Pupka").withMiddlename("Black").withLastname("Braun").withMobile("+19565067219").withEmail("test@mail.ru").withAddress2("New Orenburg");
         app.contact().modifyContact(index, contact);
         app.goTo().HomePage();
         List<ContactData> after = app.contact().list();

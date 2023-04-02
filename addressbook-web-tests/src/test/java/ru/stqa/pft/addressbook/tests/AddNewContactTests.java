@@ -24,11 +24,11 @@ public class AddNewContactTests extends TestBase {
     app.goTo().goToNewAddPage();
     if (!app.group().checkGroup()) {
       app.goTo().GroupPage();
-      app.group().create(new GroupData("test64", "test2", "test3"));
+      app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
       app.goTo().goToNewAddPage();
     }
     String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-    ContactData contact = new ContactData("Obra", "Hello", "First", "+111111111111", "test@mail.ru", "New Orenburg",CurrentGroup);
+    ContactData contact = new ContactData().withFirstname("Obra").withMiddlename("Hello").withLastname("First").withMobile("+111111111111").withEmail("test@mail.ru").withAddress2("New Orenburg").withGroup(CurrentGroup);
     app.contact().contact(contact);
     app.goTo().HomePage();
     List<ContactData> after = app.contact().list();
