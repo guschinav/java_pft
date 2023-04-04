@@ -31,7 +31,9 @@ public class ContactModificationTests extends TestBase{
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
             app.contact().contact(new ContactData()
-                    .withFirstname("John").withMiddlename("Silver").withLastname("Yellow").withMobile("+791115648594").withEmail("test@mail.ru").withAddress("New Orenburg").withGroup(CurrentGroup));
+                    .withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Test")
+                    .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("+79211111111")
+                    .withWorkPhone("+7864578").withGroup(CurrentGroup));
             app.goTo().HomePage();
         }
     }

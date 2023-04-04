@@ -29,9 +29,9 @@ public class ContactCreationTests extends TestBase {
             app.goTo().goToNewAddPage();
         }
         String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-        ContactData contact = new ContactData().withFirstname("Petr").withMiddlename("Pavlovich").withLastname("Smirnov")
-                .withNickname("testuser").withCompany("TestCompany").withAddress("Country1,City1, Street1, 1-1-1").withMobile("+45123456789")
-                .withWorkPhone("+987654321").withGroup(CurrentGroup);
+        ContactData contact = new ContactData().withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Test")
+                .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("+79211111111")
+                .withWorkPhone("+7864578").withGroup(CurrentGroup);
         app.contact().contact(contact);
         app.goTo().HomePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));

@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactPhoneTests extends TestBase{
+
+public class ContactMailTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions (){
@@ -34,27 +35,28 @@ public class ContactPhoneTests extends TestBase{
         }
     }
 
+
+
     @Test
-
-    public void testContactPhones(){
+    public void testContactMails() {
         app.goTo().HomePage();
-        ContactData contact = app.contact().all().iterator().next(); //загружаем множество контактов
+        ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+        assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
+        assertThat(contact.getAllEmails(), equalTo(poEmails(contactInfoFromEditForm)));
 
-        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
     }
 
-    private String mergePhones(ContactData contact) {
-       return Arrays.asList(contact.getHomephone(), contact.getMobile(), contact.getWorkPhone())
-               .stream().filter((s) -> ! s.equals(""))
-               .map(ContactPhoneTests::cleaned)
-               .collect(Collectors.joining("\n"));
-
+    private String poEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals(""))
+                .map(ContactPhoneTests::cleaned)
+                .collect(Collectors.joining("\n"));
     }
 
     public static String cleaned(String phone) {
-        return phone.replaceAll("\\s","").replaceAll("[-()]", "");
+        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
-
 }
+
