@@ -31,7 +31,7 @@ public class ContactModificationTests extends TestBase{
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
             app.contact().contact(new ContactData()
-                    .withFirstname("John").withMiddlename("Silver").withLastname("Yellow").withMobile("+791115648594").withEmail("test@mail.ru").withAddress2("New Orenburg").withGroup(CurrentGroup));
+                    .withFirstname("John").withMiddlename("Silver").withLastname("Yellow").withMobile("+791115648594").withEmail("test@mail.ru").withAddress("New Orenburg").withGroup(CurrentGroup));
             app.goTo().HomePage();
         }
     }
@@ -44,7 +44,7 @@ public class ContactModificationTests extends TestBase{
     public void testContactModification () {
         Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
-        ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Pupka").withMiddlename("Black").withLastname("Braun").withMobile("+19565067219").withEmail("test@mail.ru").withAddress2("New Orenburg");
+        ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Pupka").withMiddlename("Black").withLastname("Braun").withMobile("+19565067219").withEmail("test@mail.ru").withAddress("New Orenburg");
         app.contact().modifyContact(contact);
         app.goTo().HomePage();
         assertThat(app.contact().count(), equalTo(before.size()));
