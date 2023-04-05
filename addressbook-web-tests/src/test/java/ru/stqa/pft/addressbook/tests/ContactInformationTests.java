@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactPhoneTests extends TestBase{
+public class ContactInformationTests extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions (){
@@ -28,8 +28,8 @@ public class ContactPhoneTests extends TestBase{
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
             app.contact().contact(new ContactData()
                     .withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Testovich")
-                    .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("+79211111111")
-                    .withWorkPhone("+7864578").withEmail("test@test.ru").withEmail2("test2@test.ru").withEmail3("test3@test.ru").withGroup(CurrentGroup));
+                    .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("-792 111111 11")
+                    .withWorkPhone("+7864578").withEmail("test@test.ru").withEmail2("test2 @test.ru").withEmail3("test3@test.ru").withGroup(CurrentGroup));
             app.goTo().HomePage();
         }
     }
@@ -42,14 +42,22 @@ public class ContactPhoneTests extends TestBase{
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+        assertThat(contact.getAllEmails(), equalTo(poEmails(contactInfoFromEditForm)));
     }
 
     private String mergePhones(ContactData contact) {
        return Arrays.asList(contact.getHomephone(), contact.getMobile(), contact.getWorkPhone())
                .stream().filter((s) -> ! s.equals(""))
-               .map(ContactPhoneTests::cleaned)
+               .map(ContactInformationTests::cleaned)
                .collect(Collectors.joining("\n"));
 
+    }
+
+    private String poEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals(""))
+                .collect(Collectors.joining("\n"));
     }
 
     public static String cleaned(String phone) {
