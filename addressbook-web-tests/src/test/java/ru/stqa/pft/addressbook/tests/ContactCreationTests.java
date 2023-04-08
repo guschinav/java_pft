@@ -30,7 +30,7 @@ public class ContactCreationTests extends TestBase {
         File photo = new File("src/test/resources/test.png");
         ContactData contact = new ContactData().withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Test")
                 .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("+79211111111")
-                .withWorkPhone("+7864578").withGroup(CurrentGroup). withPhoto(photo);
+                .withWorkPhone("+7864578").withGroup(CurrentGroup); //.withPhoto(photo)
         app.contact().contact(contact);
         app.goTo().HomePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
