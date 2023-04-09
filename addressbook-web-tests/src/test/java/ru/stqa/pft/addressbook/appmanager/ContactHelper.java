@@ -81,7 +81,7 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public void contact(ContactData contactData) {
+    public void create(ContactData contactData) {
         fillNewContact(contactData,true);
         addNewContact();
         contactCache = null;
@@ -90,7 +90,7 @@ public class ContactHelper extends HelperBase {
 
     public  void modifyContact(ContactData contact) {
         editContactById(contact.getId());
-        fillNewContact(contact, false);
+        fillNewContact(contact, true);
         updateContactModification();
         contactCache = null;
     }

@@ -1,0 +1,44 @@
+<list>
+  <contact>
+    <firstname>FirstName 0;</firstname>
+    <lastname>LastName
+0;</lastname>
+    <nickname>testuser
+0;</nickname>
+    <address>Address
+0;</address>
+    <mobile>1111
+0;</mobile>
+    <workphone>2222
+0;</workphone>
+    <group>test 1</group>
+  </contact>
+  <contact>
+    <firstname>FirstName 1;</firstname>
+    <lastname>LastName
+1;</lastname>
+    <nickname>testuser
+1;</nickname>
+    <address>Address
+1;</address>
+    <mobile>1111
+1;</mobile>
+    <workphone>2222
+1;</workphone>
+    <group>test 1</group>
+  </contact>
+  <contact>
+    <firstname>FirstName 2;</firstname>
+    <lastname>LastName
+2;</lastname>
+    <nickname>testuser
+2;</nickname>
+    <address>Address
+2;</address>
+    <mobile>1111
+2;</mobile>
+    <workphone>2222
+2;</workphone>
+    <group>test 1</group>
+  </contact>
+</list>
