@@ -13,6 +13,7 @@ dependencies {
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.20'
     implementation 'ch.qos.logback:logback-classic:1.4.6'
     implementation 'mysql:mysql-connector-java:8.0.32'
+    implementation 'org.hibernate:hibernate-core:5.6.15.Final'
 }
 
 task testGroups(type: Test){
