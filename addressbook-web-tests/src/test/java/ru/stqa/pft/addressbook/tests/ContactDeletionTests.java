@@ -23,7 +23,7 @@ public class ContactDeletionTests extends TestBase {
             }
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-            app.contact().contact(new ContactData()
+            app.contact().create(new ContactData()
                     .withFirstname("John").withMiddlename("Silver").withLastname("Yellow").withMobile("+791115648594").withEmail("test@mail.ru").withAddress("New Orenburg").withGroup(CurrentGroup));
             app.goTo().HomePage();
         }
