@@ -1,18 +1,11 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,7 +23,7 @@ public class ContactModificationTests extends TestBase{
             }
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-            app.contact().contact(new ContactData()
+            app.contact().create(new ContactData()
                     .withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Test")
                     .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("+79211111111")
                     .withWorkPhone("+7864578").withGroup(CurrentGroup));
