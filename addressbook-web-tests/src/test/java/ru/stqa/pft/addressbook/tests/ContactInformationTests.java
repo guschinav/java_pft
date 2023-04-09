@@ -26,7 +26,7 @@ public class ContactInformationTests extends TestBase{
             }
             app.goTo().goToNewAddPage();
             String CurrentGroup = app.wd.findElement(By.xpath("//div[@id='content']/form/select[5]/option[2]")).getText();
-            app.contact().contact(new ContactData()
+            app.contact().create(new ContactData()
                     .withFirstname("Anton").withMiddlename("Ivanocih").withLastname("Testovich")
                     .withNickname("Omut").withCompany("TestCp").withAddress("test test test").withMobile("-792 111111 11")
                     .withWorkPhone("+7864578").withEmail("test@test.ru").withEmail2("test2 @test.ru").withEmail3("test3@test.ru").withGroup(CurrentGroup));
